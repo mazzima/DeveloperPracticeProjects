@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CodeChallenge1_GettingDataFromAnAPI.Controllers;
+using System;
 
 namespace CodeChallenge1_GettingDataFromAnAPI
 {
@@ -33,7 +34,15 @@ namespace CodeChallenge1_GettingDataFromAnAPI
              * Advice #4 - Even though you aren't passing any body to the API, the Credit Card API still requires you to use a POST request.
              * Advice #5 - When doing the JSONConvert, deserialize the result to type string[].
              * */
+            CreditCardAPIController CCMTerminalList = new CreditCardAPIController("Regression", "f8cd3f4554f74a89bdb625bc");
 
+            string[] terminalList = await CCMTerminalList.GetTerminalIdentifiers();
+
+            foreach (string terminal in terminalList)
+            {
+                System.Console.WriteLine(terminal);
+            }
+            System.Console.ReadLine();
         }
     }
 }
